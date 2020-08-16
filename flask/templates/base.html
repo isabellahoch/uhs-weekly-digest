@@ -1,0 +1,105 @@
+<!-- remember to go to https://bootstrapemail.com/editor when done editing and convert from regular html to email-safe html :) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <link rel="stylesheet" media="all" href="https://bootstrapemail.com/assets/application-mailer-dbc5154d3c4160e8fa7ef52fa740fa402760c39b5d22c8f6d64ad5999499d263.css" />
+   <style>
+   body {
+       align-items: center;
+       justify-content: center;
+   }
+   a {
+       color:#ab192d !important;
+   }
+   </style>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+ </head>
+ <body class="bg-light align-items-center justify-content-center text-center">
+    <preview>Your Weekly Digest for the Week of {{ info.date }}</preview>
+        <div class="container">
+            <img class="mx-auto mt-4 mb-3" width="42" height="30" src="static/img/logo.png" />
+            <div class="card mb-4 text-left" style="border-top: 5px solid #ab192d;">
+                <div class="card-body">
+                    <h2 class="text-center">Announcements</h2>
+                    <h5 class="text-muted text-center">September 21, 2017 at 6:54 PM</h5>
+
+                    <hr/>
+
+                    <!-- <h4 class="text-center"><strong>Club Meetings</strong></h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td style="border-top: 0;"><strong>Club</strong></td>
+                                <td style="border-top: 0;"><strong>Description</strong></td>
+                                <td style="border-top: 0;"><strong>Meeting Time</strong></td>
+                                <td style="border-top: 0;"><strong>Link</strong></td>
+                            </tr>
+                            {% for this_club in info.club_meetings %}
+                            <tr>
+                                <td>{{ this_club.title }}</td>
+                                <td>{{ this_club.description }}</td>
+                                <td>{{ this_club.meeting_time }}</td>
+                                <td>{{ this_club.link }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr/> -->
+                    <h4 class="text-center"><strong>Club Meetings</strong></h4>
+                    <ul>
+                    {% for this_club_meeting in info.club_meetings %}
+                        <li>
+                        <strong><a href="{{ this_club_meeting.link }}">{{ this_club_meeting.title }}: {{ this_club_meeting.time }} on {{ this_club_meeting.date }}</a></strong>
+                        <p>{{ this_club_meeting.description }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <hr/>
+                    <h4 class="text-center"><strong>Spirit Events</strong></h4>
+                    <ul>
+                    {% for this_spirit_event in info.spirit_events %}
+                        <li>
+                        <strong><a href="{{ this_spirit_event.link }}">{{ this_spirit_event.title }}: {{ this_spirit_event.time }} on {{ this_spirit_event.date }}</a></strong>
+                        <p>{{ this_spirit_event.description }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <hr/>
+
+                    <h4 class="text-center"><strong>Deadlines</strong></h4>
+                    <ul>
+                    {% for this_deadline in info.deadlines %}
+                        <li>
+                        <strong>{{ this_deadline.title }}:  DUE {{ this_deadline.date }}{% if this_deadline.time %}at {{ this_deadline.time }}{% endif %}</strong>
+                        <p>{{ this_deadline.description }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <hr/>
+
+                    <h4 class="text-center"><strong>General Announcements</strong></h4>
+                    <ul>
+                    {% for this_general_announcement in info.general_announcements %}
+                        <li>
+                        <strong>{{ this_general_announcement.title }}</strong>
+                        <p>{{ this_general_announcement.description }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card w-100 mb-4">
+                <div class="card-body">
+                    <h4 class="text-center">Submit an announcement to next week's Digest!</h4>
+                    <p class="text-center">All submissions are due by midnight on {{ info.deadline }}</p>
+                    <a class="btn btn-primary btn-lg mx-auto mt-2" style="background-color:#ab192d; color:#fff !important" href="https://forms.gle/orpDUzL8vu5NF4ok8">Submit an Announcement</a>
+                </div>
+            </div>
+            <div class="text-center text-muted mb-4">© VPs of Technology 2020-2021</div>
+
+        
+
+            </body>
+            </html>
