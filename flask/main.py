@@ -24,21 +24,31 @@ def generate_weekly_digest():
     info["spirit_events"] = []
     info["club_meetings"] = []
     info["deadlines"] = []
-    info["other"] = []
+    info["general_announcements"] = []
     all_announcements = sheet.get_all_values()
     all_announcements.pop(0)
     for announcement in all_announcements:
-        this_announcement = {"timestamp":announcement[0], "email":announcement[1], "type":announcement[2], "title":announcement[3], "description":announcement[4], "date":announcement[5], "time":announcement[6], "link":announcement[7]}
-        if this_announcement["type"] == "Spirit Event":
-            info["spirit_events"].append(this_announcement)
-        elif this_announcement["type"] == "Club Meeting":
-            info["club_meetings"].append(this_announcement)
-        elif this_announcement["type"] == "Deadline":
-            info["deadlines"].append(this_announcement)
-        else:
-            info["other"].append(this_announcement)
-    info["weekdates"] = str(info["date"] + datetime.timedelta(days=1))+" - "+str(info["deadline"])
-    return render_template('base.html', info = info)
+        if announcement[8] != "x":
+            this_announcement = {"timestamp":announcement[0], "email":announcement[1], "type":announcement[2], "title":announcement[3], "description":announcement[4], "date":announcement[5], "time":announcement[6], "link":announcement[7]}
+            # if this_announcement["time"]:
+                # this_announcement["time"] = this_announcement["time"].split(":00 ")[0]+" "+this_announcement["time"].split(":00 ")[1]
+            if "<a href" in this_announcement["description"]:
+                print("oh no there's a link")
+                the_link = this_announcement["description"].split("<a")[1].split("</a>")[0]
+                the_link = '<a style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;" '+the_link+"</a>"
+                this_announcement["description"] = this_announcement["description"].split("<a")[0] + the_link + this_announcement["description"].split("</a>")[1]
+            if this_announcement["type"] == "Spirit Event":
+                info["spirit_events"].append(this_announcement)
+            elif this_announcement["type"] == "Club Meeting":
+                info["club_meetings"].append(this_announcement)
+            elif this_announcement["type"] == "Deadline":
+                info["deadlines"].append(this_announcement)
+            else:
+                info["general_announcements"].append(this_announcement)
+    info["weekdates"] = str((info["date"] + datetime.timedelta(days=1)).strftime("%B %d"))+" - "+str(info["deadline"].strftime("%B %d, %Y"))
+    info["date"] = info["date"].strftime("%A, %B %d")
+    info["deadline"] = info["deadline"].strftime("%A, %B %d")
+    return render_template('mailchimp.html', info = info)
 
 
 
