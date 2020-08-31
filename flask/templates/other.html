@@ -47,7 +47,7 @@
                             {% for this_club in info.club_meetings %}
                             <tr>
                                 <td>{{ this_club.title }}</td>
-                                <td>{{ this_club.description }}</td>
+                                <td>{{ this_club.description|safe }}</td>
                                 <td>{{ this_club.meeting_time }}</td>
                                 <td>{{ this_club.link }}</td>
                             </tr>

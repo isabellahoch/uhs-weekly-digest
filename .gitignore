@@ -1,2 +1,4 @@
 flask/credentials.json
 flask/service_account.json
+flask/client_secret.json
+flask/calendar_credentials.json

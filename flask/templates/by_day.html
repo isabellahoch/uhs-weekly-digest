@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html style="box-sizing: border-box;font-family: sans-serif;line-height: 1.15;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-ms-overflow-style: scrollbar;-webkit-tap-highlight-color: transparent;">
+ <head style="box-sizing: border-box;">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" style="box-sizing: border-box;">
+   <link rel="stylesheet" media="all" href="https://bootstrapemail.com/assets/application-mailer-dbc5154d3c4160e8fa7ef52fa740fa402760c39b5d22c8f6d64ad5999499d263.css" style="box-sizing: border-box;">
+   <style style="box-sizing: border-box;">
+   body {
+       align-items: center;
+       justify-content: center;
+   }
+   a {
+       color:#ab192d !important;
+   }
+   </style>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" style="box-sizing: border-box;">
+ </head>
+ <body class="bg-light align-items-center justify-content-center text-center" style="box-sizing: border-box;align-items: center!important;justify-content: center!important;margin: 0;font-family: -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #212529;text-align: center!important;background-color: #f8f9fa!important;min-width: 992px!important;-ms-flex-pack: center!important;-ms-flex-align: center!important;">
+    <preview style="box-sizing: border-box; color:#fff">Your Weekly Digest for the Week of {{ info.date }}</preview>
+    
+        <div class="container" style="box-sizing: border-box;width: 100%;padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;min-width: 992px!important;">
+            <img class="mx-auto mt-4 mb-3" width="250" src="https://github.com/isabellahoch/uhs-weekly-digest/blob/master/flask/static/img/new_logo.png?raw=true" style="box-sizing: border-box;vertical-align: middle;border-style: none;page-break-inside: avoid;margin-bottom: 1rem!important;margin-top: 1.5rem!important;margin-right: auto!important;margin-left: auto!important;">
+            <div class="card mb-4 text-left" style="width:100%; border-top: 5px solid #ab192d;box-sizing: border-box;position: relative;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;margin-bottom: 1.5rem!important;text-align: left!important;">
+                <div class="card-body" style="box-sizing: border-box;-ms-flex: 1 1 auto;flex: 1 1 auto;padding: 1.25rem; width:100%">
+                    <h2 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 2rem;orphans: 3;widows: 3;page-break-after: avoid;text-align: center!important;">Announcements</h2>
+                    <h5 class="text-muted text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: #6c757d!important;font-size: 1.25rem;text-align: center!important;">{{ info.weekdates }}</h5>
+
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+
+                    <!-- <h4 class="text-center"><strong>Club Meetings</strong></h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td style="border-top: 0;"><strong>Club</strong></td>
+                                <td style="border-top: 0;"><strong>Description</strong></td>
+                                <td style="border-top: 0;"><strong>Meeting Time</strong></td>
+                                <td style="border-top: 0;"><strong>Link</strong></td>
+                            </tr>
+                            {% for this_club in info.club_meetings %}
+                            <tr>
+                                <td>{{ this_club.title|safe }}</td>
+                                <td>{{ this_club.description|safe }}</td>
+                                <td>{{ this_club.meeting_time }}</td>
+                                <td>{{ this_club.link }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr/> -->
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">Monday</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.monday %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">Tuesday</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.tuesday %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">Wednesday</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.wednesday %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{% if this_announcement.calendar_link %}<a href="{{ this_announcement.calendar_link }}">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</a>{% else %}{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">Thursday</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.thursday %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">Friday</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.friday %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">Saturday/Sunday</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.weekend %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+                    {% if info.miscellaneous %}
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;"><strong style="box-sizing: border-box;font-weight: bolder;">General Announcements</strong></h4>
+                    <ul style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;">
+                    {% for this_announcement in info.miscellaneous %}
+                        {% if this_announcement.type=="Spirit Event" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Club Meeting" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}: {{ this_announcement.date }} at {{ this_announcement.time }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;"><a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a></p>
+                            </li>
+                        {% elif this_announcement.type=="Deadline" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}{% if this_announcement.date %}:  {{ this_announcement.date }}{% if this_announcement.time %} at {{ this_announcement.time }}{% endif %}{% endif %}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% elif this_announcement.type=="Other" %}
+                            <li style="box-sizing: border-box;list-style:none">
+                                <strong style="box-sizing: border-box;color: #ab192d !important;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.title|safe }}</strong>
+                                <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3; margin-bottom: 0;">{{ this_announcement.description|safe }}</p>
+                                <p style="box-sizing: border-box;">{% if this_announcement.link %}<a href="{{ this_announcement.link }}" style="box-sizing: border-box;color: #ab192d !important;text-decoration: underline;background-color: transparent;-webkit-text-decoration-skip: objects;">{{ this_announcement.link }}</a>{% endif %}</p>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <hr style="box-sizing: content-box;height: 0;overflow: visible;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 1px solid rgba(0,0,0,.1);">
+                    {% endif %}
+                    
+                </div>
+            </div>
+
+            <div class="card w-100 mb-4" style="box-sizing: border-box;position: relative;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;width: 100%!important;margin-bottom: 1.5rem!important;">
+                <div class="card-body" style="box-sizing: border-box;-ms-flex: 1 1 auto;flex: 1 1 auto;padding: 1.25rem; width:100%">
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;">Submit an Announcement to Next Week's Digest!</h4>
+                    <p class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3;text-align: center!important;">Please submit any information that could be (or already has been) enclosed in an all school email. Whether that be a club meeting, an affinity space, an upcoming theater audition, etc. All submissions are due by midnight on {{ info.deadline }}.</p>
+                    <a class="btn btn-primary btn-lg mx-auto mt-2" style="background-color: #ab192d;color: #fff !important;box-sizing: border-box;text-decoration: none;-webkit-text-decoration-skip: objects;display: inline-block;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;border: 1px solid transparent;padding: .5rem 1rem;font-size: 1.25rem;line-height: 1.5;border-radius: .3rem;transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;border-color: #007bff;margin-top: .5rem!important;margin-right: auto!important;margin-left: auto!important;" href="https://forms.gle/orpDUzL8vu5NF4ok8">Weekly Digest Sign-Up</a>
+                </div>
+            </div>
+            <div class="card w-100 mb-4" style="box-sizing: border-box;position: relative;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;width: 100%!important;margin-bottom: 1.5rem!important;">
+                <div class="card-body" style="box-sizing: border-box;-ms-flex: 1 1 auto;flex: 1 1 auto;padding: 1.25rem; width:100%">
+                    <h4 class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: .5rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: inherit;font-size: 1.5rem;text-align: center!important;">Sign Up for ASM Next Week!</h4>
+                    <p class="text-center" style="box-sizing: border-box;margin-top: 0;margin-bottom: 1rem;orphans: 3;widows: 3;text-align: center!important;">Use this form to submit unique information, which is either critically important or presented in a way where the information is significantly enhanced compared to being in an email. Whether that be Battle of the Classes, a student perspective on energy sustainability within the home, announcing a new club or fundraiser, a performance, etc. Remember, time is extremely limited, and so is StuCo's willingness to add things to the agenda at 6 AM Wednesday morning. More information can be found within the form itself.</p>
+                    <a class="btn btn-primary btn-lg mx-auto mt-2" style="background-color: #ab192d;color: #fff !important;box-sizing: border-box;text-decoration: none;-webkit-text-decoration-skip: objects;display: inline-block;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;border: 1px solid transparent;padding: .5rem 1rem;font-size: 1.25rem;line-height: 1.5;border-radius: .3rem;transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;border-color: #007bff;margin-top: .5rem!important;margin-right: auto!important;margin-left: auto!important;" href="https://forms.gle/WWyVpTaGTTEtFNEp7">ASM Sign-Up</a>
+                </div>
+            </div>
+            <div class="text-center text-muted mb-4" style="box-sizing: border-box;margin-bottom: 1.5rem!important;text-align: center!important;color: #6c757d!important;">© VPs of Technology 2020-2021</div>
+
+        
+
+            </div>
+        </body>
+</html>
